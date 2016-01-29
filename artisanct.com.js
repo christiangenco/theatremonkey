@@ -8,13 +8,15 @@
 @cache 0
 */
 
+// https://taskmill.io/christiangenco/theatrescrapers/blob/master/artisanct.com.js
+
 var rp  = require('request-promise'),
 Promise = require('bluebird'),
 _       = require('underscore'),
-artoo   = require('artoo-js'),
+// artoo   = require('artoo-js'),
 cheerio = require('cheerio');
 
-artoo.bootstrap(cheerio);
+// artoo.bootstrap(cheerio);
 
 var data = $('ul > li').scrape(params);
 
@@ -25,7 +27,7 @@ module.exports = function(req, res, next) {
   .then(function(data){
     return cheerio.load(data);
   }).then(function($){
-    var titles = $('.event-title a').scrape();
+    var titles = $('.event-title a'); //.scrape();
     res.send(titles);
     // Promise
     // .resolve(post.kids)
